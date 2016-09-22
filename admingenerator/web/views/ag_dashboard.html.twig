@@ -1,0 +1,46 @@
+{% extends 'ag_base/backend.html.twig' %}
+
+{% block body_params %}class="skin-black"{% endblock %}
+
+{% block container %}
+
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+
+        {% include 'menu.html.twig' with {'option': 'dasboard'} %}
+
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">                
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Dashboard Stats
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                
+                                <script type="text/javascript" src="../../SERV//JS/jquery.js"></script>
+                                <script type="text/javascript" src="../../SERV/JS/comun.php"></script>
+                                <script type="text/javascript" src="../../STAT/JS/stat.js"></script>   
+                              
+                                <h1>Estadísticas</h1>
+                                <p>De <input id="periodo_inicio" type="date" value="{{ "now"|date("Y-m-d") }}" /> a 
+                                    <input id="periodo_final" type="date" value="{{ "now"|date("Y-m-d") }}" /> 
+                                    <button id="actualizar">Actualizar</button></p>
+                                <div id="estadisticas"></div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+
+            </section><!-- /.content -->
+        </aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+{% endblock %}

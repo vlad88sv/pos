@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<impresion>
+<documento>
+<plantilla>consumidor_final__7g_matricial</plantilla>
+<revision>1</revision>
+</documento>
+<datos>
+<campo id="cliente">Clientes varios</campo>
+<campo id="fecha">24/03/2016</campo>
+<campo id="nit"></campo>
+<campo id="direccion"></campo>
+<tabla id="productos">
+<fila><columna>1</columna><columna>Consumo</columna><columna>60.52</columna><columna></columna><columna></columna><columna>60.52</columna></fila>
+<fila><columna>1</columna><columna>Propina</columna><columna></columna><columna>6.05</columna><columna></columna><columna></columna></fila>
+</tabla><campo id="suma_ventas_no_sujetas">6.05</campo>
+<campo id="suma_ventas_gravadas">60.52</campo>
+<campo id="iva">6.96</campo>
+<campo id="subtotal">60.52</campo>
+<campo id="venta_no_sujeta">6.05</campo>
+<campo id="total">66.57</campo>
+</datos>
+</impresion>

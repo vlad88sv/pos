@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plantilla>
+  <documento>
+    <descripcion>Consumidor final - 7G</descripcion>
+    <revision>1</revision>
+    <impresora ancho="600" alto="820" fuente="Roman 10cpi" fuenteTamano="9" interlineado="0.00" rellenoIzq="0.30" rellenoSup="0.10" copias="1">Microsoft XPS Document Writer</impresora>
+  </documento>
+  <contenido>
+    <campo x="0.62" y="2.600" id="cliente" />
+    <campo x="3.73" y="2.190" id="fecha" />
+    <campo x="0.790" y="2.810" id="direccion" />
+	<campo x="2.250" y="3.050" id="nit" />
+	<campo x="0.710" y="3.050" id="dui" />
+    <tabla y="3.880" id="productos" interlineado="0.125">
+      <columna x="0.450" l="0.276" t="CANT." />
+      <columna x="0.850" l="1.614" t="DESCRIPCION" />
+      <columna x="2.920" l="0.394" t="PRECIO UNITARIO" />
+      <columna x="3.540" l="0.394" t="VENTAS NO SUJETAS" />
+      <columna x="3.830" l="0.394" t="VENTAS EXENTAS" />
+      <columna x="4.180" l="0.394" t="VENTAS GRAVADAS" alineacion="derecha" />
+    </tabla>
+    <campo x="3.540" y="7.200" l="0.394" alineacion="derecha" id="suma_ventas_no_sujetas" />
+    <campo x="3.830" y="7.200" l="0.394" alineacion="derecha" id="suma_ventas_exentas" />
+    <campo x="4.180" y="7.200" l="0.394" alineacion="derecha" id="suma_ventas_gravadas" />
+	
+    <campo x="4.20" y="7.740" l="0.394" alineacion="derecha" id="venta_exenta" />
+    <campo x="4.20" y="7.960" l="0.394" alineacion="derecha" id="total" />
+  </contenido>
+</plantilla>

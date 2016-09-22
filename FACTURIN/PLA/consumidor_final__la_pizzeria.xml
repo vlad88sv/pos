@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documento>
+	<descripcion>Consumidor final - Las Tablitas Stake House</descripcion>
+	<revision>1</revision>
+	<impresoras>
+		<impresora ancho="" alto="" fuente="Arial" fuenteTamano="12" interlineado="0.16" rellenoIzq="0" rellenoSup="0" copias="1">Microsoft XPS Document Writer</impresora>
+	</impresoras>
+</documento>
+<plantilla>
+	<campo x="0" y="0" id="cliente"></campo>
+	<campo x="0" y="0" id="fecha"></campo>
+	<campo x="0" y="0" id="direccion"></campo>
+	<tabla x="0" y="0" id="productos" interlineado="0">
+		<columna x=""></columna>
+		<columna x=""></columna>
+		<columna x=""></columna>
+		<columna x=""></columna>
+		<columna x="" alineacion="derecha"></columna>
+	</tabla>
+	<campo x="0" y="0" id="subtotal"></campo>
+	<campo x="0" y="0" id="iva"></campo>
+	<campo x="0" y="0" id="total"></campo>
+</plantilla>

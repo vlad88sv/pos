@@ -1,0 +1,199 @@
+{% extends 'ag_menu.html.twig' %}
+
+{% block menu %}
+
+ <li class="treeview {% if option is defined and (option == 'catalogo_list' or option == 'catalogo_create' or option == 'catalogo_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>catalogo</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'catalogo_list' %}class="active"{% endif %}><a href="{{ path('catalogo_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'catalogo_create' %}class="active"{% endif %}><a href="{{ path('catalogo_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+ <li class="treeview {% if option is defined and (option == 'inventario_list' or option == 'inventario_create' or option == 'inventario_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>inventario</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'inventario_list' %}class="active"{% endif %}><a href="{{ path('inventario_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'inventario_create' %}class="active"{% endif %}><a href="{{ path('inventario_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'adicionables_list' or option == 'adicionables_create' or option == 'adicionables_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>adicionables</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'adicionables_list' %}class="active"{% endif %}><a href="{{ path('adicionables_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'adicionables_create' %}class="active"{% endif %}><a href="{{ path('adicionables_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+{#<li class="treeview {% if option is defined and (option == 'comandas_list' or option == 'comandas_create' or option == 'comandas_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>comandas</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'comandas_list' %}class="active"{% endif %}><a href="{{ path('comandas_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'comandas_create' %}class="active"{% endif %}><a href="{{ path('comandas_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>#}
+
+<li class="treeview {% if option is defined and (option == 'compras_list' or option == 'compras_create' or option == 'compras_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>compras</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'compras_list' %}class="active"{% endif %}><a href="{{ path('compras_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'compras_create' %}class="active"{% endif %}><a href="{{ path('compras_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'cortez_list' or option == 'cortez_create' or option == 'cortez_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>cortez</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'cortez_list' %}class="active"{% endif %}><a href="{{ path('cortez_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'cortez_create' %}class="active"{% endif %}><a href="{{ path('cortez_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'cuenta_descuento_list' or option == 'cuenta_descuento_create' or option == 'cuenta_descuento_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>cuenta_descuento</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'cuenta_descuento_list' %}class="active"{% endif %}><a href="{{ path('cuenta_descuento_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'cuenta_descuento_create' %}class="active"{% endif %}><a href="{{ path('cuenta_descuento_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'cuentas_list' or option == 'cuentas_create' or option == 'cuentas_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>cuentas</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'cuentas_list' %}class="active"{% endif %}><a href="{{ path('cuentas_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'cuentas_create' %}class="active"{% endif %}><a href="{{ path('cuentas_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+{#<li class="treeview {% if option is defined and (option == 'domicilio_list' or option == 'domicilio_create' or option == 'domicilio_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>domicilio</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'domicilio_list' %}class="active"{% endif %}><a href="{{ path('domicilio_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'domicilio_create' %}class="active"{% endif %}><a href="{{ path('domicilio_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>#}
+
+<li class="treeview {% if option is defined and (option == 'historial_list' or option == 'historial_create' or option == 'historial_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>historial</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'historial_list' %}class="active"{% endif %}><a href="{{ path('historial_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'historial_create' %}class="active"{% endif %}><a href="{{ path('historial_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'pedidos_list' or option == 'pedidos_create' or option == 'pedidos_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>pedidos</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'pedidos_list' %}class="active"{% endif %}><a href="{{ path('pedidos_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'pedidos_create' %}class="active"{% endif %}><a href="{{ path('pedidos_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'pedidos_adicionales_list' or option == 'pedidos_adicionales_create' or option == 'pedidos_adicionales_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>pedidos_adicionales</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'pedidos_adicionales_list' %}class="active"{% endif %}><a href="{{ path('pedidos_adicionales_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'pedidos_adicionales_create' %}class="active"{% endif %}><a href="{{ path('pedidos_adicionales_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'productos_list' or option == 'productos_create' or option == 'productos_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>productos</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'productos_list' %}class="active"{% endif %}><a href="{{ path('productos_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'productos_create' %}class="active"{% endif %}><a href="{{ path('productos_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+<li class="treeview {% if option is defined and (option == 'productos_grupos_list' or option == 'productos_grupos_create' or option == 'productos_grupos_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>productos_grupos</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'productos_grupos_list' %}class="active"{% endif %}><a href="{{ path('productos_grupos_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'productos_grupos_create' %}class="active"{% endif %}><a href="{{ path('productos_grupos_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+{#<li class="treeview {% if option is defined and (option == 'sonido_list' or option == 'sonido_create' or option == 'sonido_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>sonido</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'sonido_list' %}class="active"{% endif %}><a href="{{ path('sonido_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'sonido_create' %}class="active"{% endif %}><a href="{{ path('sonido_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>#}
+
+<li class="treeview {% if option is defined and (option == 'usuarios_list' or option == 'usuarios_create' or option == 'usuarios_edit') %}active{% endif %}">
+    <a href="#">
+        <i class="fa fa-folder-o"></i>
+        <span>usuarios</span>
+        <i class="fa pull-right fa-angle-right"></i>
+    </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li {% if option is defined and option == 'usuarios_list' %}class="active"{% endif %}><a href="{{ path('usuarios_list') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> List</a></li>
+        <li {% if option is defined and option == 'usuarios_create' %}class="active"{% endif %}><a href="{{ path('usuarios_create') }}" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Create</a></li>
+    </ul>
+</li>
+
+
+
+{% endblock %}
