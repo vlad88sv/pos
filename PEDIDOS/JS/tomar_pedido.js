@@ -311,153 +311,142 @@ $(function(){
         $("#busqueda_adicionales").val('').focus().trigger('keyup');
     });
     
-    $('#enviar_orden_a_cocina').click(function(){
-        
-        // Chequeemos si esta autorizado para enviar ordenes
-        
-        rsv_solicitar('aut',{permisos:['ingresar_orden']}, function(retorno){
-            if ( typeof(retorno.AUTORIZADO) === "undefined" )
-            {   
-                alert('HUBO UN ERROR CON EL SERVIDOR DE AUTORIZACIÓN, SU ORDEN NO PUEDE ENVIARSE.');
-                return;
-            }
-            
-            if (retorno.AUTORIZADO == 'no') {
-                aut_solicitar();
-                return;
-            }
-        
-            if (_orden.length == 0)
-            {
-                alert('No hay pedidos en la orden.');
-                return;
-            }
-            
-            ResumenOrden();
+    $('#enviar_orden_a_cocina').click(function () {
+
+        if (_orden.length == 0)
+        {
+            alert('No hay pedidos en la orden.');
+            return;
+        }
+
+        ResumenOrden();
 
 /// **************  MESA
-            var ID_mesa = 0;
-            
-            while ( ID_mesa == 0 ) {
-                ID_mesa = window.prompt('1. Número de MESA: ','0');
-                
-                if (!ID_mesa) {
-                    alert ('Cancelando envío');
-                    return;
-                }else{
-    
-                    if (/^[0-9]+$/.test(ID_mesa) == false)
-                    {
-                        alert('Número de mesa no valido .');
-                        ID_mesa = 0;
+        var ID_mesa = 0;
 
-                    }else{
-                        if(ID_mesa < 1  ||  ID_mesa > 16)  {
-                            alert('Número de mesa incorrecto [1-20].');
-                            ID_mesa = 0;
-                        }
+        while (ID_mesa == 0) {
+            ID_mesa = window.prompt('1. Número de MESA: ', '0');
+
+            if (!ID_mesa) {
+                alert('Cancelando envío');
+                return;
+            } else {
+
+                if (/^[0-9]+$/.test(ID_mesa) == false)
+                {
+                    alert('Número de mesa no valido .');
+                    ID_mesa = 0;
+
+                } else {
+                    if (ID_mesa < 1 || ID_mesa > 20) {
+                        alert('Número de mesa incorrecto [1-20].');
+                        ID_mesa = 0;
                     }
                 }
             }
+        }
 
 /// **************  MESERO                        
-            var ID_mesero_busqueda = 0;
-            var ID_comanda = 0;
-            var mesaAbierta=false;
-            if(ID_mesa > 0){
-                rsv_solicitar('cuenta',{mesa: ID_mesa, pendientes: true}, function(datos){
-                    try {
-                        if ( typeof datos.aux.pendientes != "undefined" && datos.aux.pendientes != '')
-                        {
-                            ID_mesero_busqueda = datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].ID_mesero;
-                            ID_comanda= datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].ID_comanda;
-                            mesaAbierta=true;
-                            alert('Mesa con cuenta abierta. Mesero# ' +ID_mesero_busqueda );
+        var ID_mesero_busqueda = 0;
+        var ID_comanda = 0;
+        var mesaAbierta = false;
+        rsv_solicitar('cuenta', {mesa: ID_mesa, pendientes: true}, function (datos) {
+            try {
+                if (typeof datos.aux.pendientes != "undefined" && datos.aux.pendientes != '')
+                {
+                    ID_mesero_busqueda = datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].ID_mesero;
+                    ID_comanda = datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].ID_comanda;
+                    mesaAbierta = true;
+                    alert('Mesa con cuenta abierta. Mesero# ' + ID_mesero_busqueda);
 
-                            if (datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].flag_tiquetado == "1") {
-                                alert('Cuenta con ticket impreso.');
-                            }
-                        }
-                    } catch (error){
-                        ID_mesero_busqueda = 0;
-                        mesaAbierta=false;
+                    if (datos.aux.pendientes[Object.keys(datos.aux.pendientes)[0]][0].flag_tiquetado == "1") {
+                        alert('Cuenta con ticket impreso.');
                     }
-
-                    var ID_mesero = 0;
-
-                        while ( ID_mesero === 0 ) {
-                            var meseros = "";
-
-                            for (x in _meseros){
-                                meseros += " * " + _meseros[x].ID_usuarios + ". " + _meseros[x].usuario + "\n"; 
-                            }
-
-                            ID_mesero = window.prompt('2. Número de MESERO: ' + "\n" + meseros, ID_mesero_busqueda );
-
-                            if (!ID_mesero) {
-                                ID_mesero = 0;
-                                ID_mesero_busqueda = 0;
-                                alert ('Cancelando envío');
-                                return;
-                            }
-
-                            if (/^[0-9]+$/.test(ID_mesero) == false){
-                                alert('Número de mesero incorrecto.');
-                                ID_mesero = 0;
-                            }
-
-                           if (meseros.indexOf(' * ' + ID_mesero + '. ')<0){
-                               alert('Número de mesero no registrado. #' + ID_mesero);
-                               ID_mesero = 0;
-                            }
-                            
-                            if(ID_mesero>0){
-                                meseroName="";
-                                for (x in _meseros)
-                                {
-                                    if (_meseros[x].ID_usuarios===ID_mesero){
-                                        meseroName=_meseros[x].usuario;
-                                        break;
-                                    }
-                                }
-                                
-                                d1=$.Deferred();
-                                meseroPass(meseroName );
-                            }                            
-                        }
-    /// **************  COMANDA
-                    if(ID_mesero > 0){
-                        $.when(d1).done(function (v1){                    
-
-                            if (!mesaAbierta){                                      
-                                consultarComanda(ID_mesa, ID_mesero, _orden, mesaAbierta,ID_comanda);                                                                
-                            }else{
-                                alert ('Mesa abierta no comanda.');
-                                consultarComanda(ID_mesa, ID_mesero, _orden, mesaAbierta,ID_comanda);                        
-                            }
-                        });
-                    }
-                });
+                }
+            } catch (error) {
+                ID_mesero_busqueda = 0;
+                mesaAbierta = false;
             }
-        });        
+
+            var ID_mesero = 0;
+
+            while (ID_mesero === 0) {
+                var meseros = "";
+
+                for (x in _meseros) {
+                    meseros += " * " + _meseros[x].ID_usuarios + ". " + _meseros[x].usuario + "\n";
+                }
+
+                ID_mesero = window.prompt('2. Número de MESERO: ' + "\n" + meseros, ID_mesero_busqueda);
+
+                if (!ID_mesero) {
+                    ID_mesero = 0;
+                    ID_mesero_busqueda = 0;
+                    alert('Cancelando envío');
+                    return;
+                }
+
+                if (/^[0-9]+$/.test(ID_mesero) == false) {
+                    alert('Número de mesero incorrecto.');
+                    ID_mesero = 0;
+                }
+
+                if (meseros.indexOf(' * ' + ID_mesero + '. ') < 0) {
+                    alert('Número de mesero no registrado. #' + ID_mesero);
+                    ID_mesero = 0;
+                }
+
+            }
+            
+            d1 = $.Deferred();
+            meseroPass(ID_mesero);
+
+            
+            /// **************  COMANDA
+
+            $.when(d1).done(function (ID_mesero) {
+
+                if (!ID_mesero) {
+                   alert('Uusario denegado. Envio cancelado');
+                   return;
+                }
+                
+                if (mesaAbierta) {
+                    alert('Mesa abierta no comanda.');
+                }
+                consultarComanda(ID_mesa, ID_mesero, _orden, mesaAbierta, ID_comanda);
+
+            });
+        });
     });
     
      
     
-    function meseroPass(ID_mesero){
-        meseroPassword="";
-        meseroPassword = window.prompt('4. Ingrese su clave de Mesero: ');   
-                       
-        if (!meseroPassword)
-            return d1.resolve(false);
-            
-        consulta="select ID_usuarios from usuarios where disponible=1 AND usuario='" + ID_mesero + "' AND clave = sha1('" + meseroPassword + "')";                
+    function meseroPass(ID_mesero) {
+        $("#dialog-password").dialog({
+            modal: true,
+            buttons: {
+                Ok: function () {
+                    var meseroPassword = $('#dialog-password-input').val();
+                    if (!meseroPassword) {
+                       d1.resolve(false);
+                    } else {
+                       meseroPassCallback(ID_mesero, meseroPassword)
+                    }
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    }
+    
+    function meseroPassCallback(ID_mesero, meseroPassword){
+        consulta="select ID_usuarios from usuarios where disponible=1 AND ID_usuarios='" + ID_mesero + "' AND clave = sha1('" + meseroPassword + "')";                
                 
         rsv_solicitar('consultarUtils', {consulta:consulta, consultaType:"1"}, function(datos){
-            if (datos.aux !==""){                                
-                return d1.resolve(true);
+            if (datos.aux !==""){
+                d1.resolve(true);
             }else{
-                alert('Usuario no autorizado. Ingresar de nuevo: ' + ID_mesero);
+                alert('Usuario no autorizado. Ingresar password nuevamente. ID de mesero: ' + ID_mesero);
                 meseroPass(ID_mesero);
             }
         }, false);         
@@ -468,7 +457,7 @@ $(function(){
         consulta="";
         
         if (!mesaAbierta){ //no hay abierta
-            ID_comanda = window.prompt('3. Ingrese Número de COMANDA: ' );
+            ID_comanda = window.prompt('4. Ingrese Número de COMANDA: ' );
             if (!ID_comanda)
                 return;
 

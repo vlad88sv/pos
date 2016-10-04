@@ -1,4 +1,9 @@
 <script type="text/javascript" src="JS/tomar_pedido.js"></script>
+ 
+<div id="dialog-password" title="Ingrese clave" style="display:none;">
+    <input id="dialog-password-input" type ="password" />
+</div>
+
 <?php $_html['titulo'] = 'Tomar pedido'; ?>
 <table style="color:white;font-weight: bold;width:100%;margin: 0px;border-bottom: 2px solid black;background-image: url(../img/background.jpg);">
     <tr>
