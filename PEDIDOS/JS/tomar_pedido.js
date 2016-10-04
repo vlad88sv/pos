@@ -422,17 +422,21 @@ $(function(){
     
      
     
-    function meseroPass(ID_mesero){
-        var passDialogo = '';
-        passDialogo = '<input type="password" id="meseroPass" />';
-        
-        var meseroPassword="";
-        meseroPassword = window.prompt('3. Ingrese su clave de Mesero: ');           
-        
-        if (!meseroPassword)
-            return d1.resolve(false);
-            
-        meseroPassCallback(ID_mesero, meseroPassword)
+    function meseroPass(ID_mesero) {
+        $("#dialog-password").dialog({
+            modal: true,
+            buttons: {
+                Ok: function () {
+                    var meseroPassword = $('#dialog-password-input').val();
+                    if (!meseroPassword) {
+                       d1.resolve(false);
+                    } else {
+                       meseroPassCallback(ID_mesero, meseroPassword)
+                    }
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
     }
     
     function meseroPassCallback(ID_mesero, meseroPassword){
@@ -440,7 +444,7 @@ $(function(){
                 
         rsv_solicitar('consultarUtils', {consulta:consulta, consultaType:"1"}, function(datos){
             if (datos.aux !==""){
-                return d1.resolve(true);
+                d1.resolve(true);
             }else{
                 alert('Usuario no autorizado. Ingresar password nuevamente. ID de mesero: ' + ID_mesero);
                 meseroPass(ID_mesero);
