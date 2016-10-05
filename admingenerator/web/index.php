@@ -9,6 +9,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+if (1) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
 
-//if( ifempty($_SERVER("")))
+session_start();
+
+if (!isset($_SESSION['iniciado'])) {
+    require_once 'login.php';
+    return;
+}
 require_once __DIR__.'/controllers/base.php';

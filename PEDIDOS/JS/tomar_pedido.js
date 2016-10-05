@@ -425,6 +425,9 @@ $(function(){
     function meseroPass(ID_mesero) {
         $("#dialog-password").dialog({
             modal: true,
+            close: function () {
+                $('#dialog-password-input').val('')
+            },
             buttons: {
                 Ok: function () {
                     var meseroPassword = $('#dialog-password-input').val();
