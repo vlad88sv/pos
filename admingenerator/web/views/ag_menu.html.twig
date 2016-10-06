@@ -10,7 +10,11 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            
+            <li>
+                <a href="{{ path('salir') }}">
+                    <i class="fa fa-sign-out"></i> <span>Cerrar sesión</span>
+                </a>
+            </li>
             <li {% if option is defined and option == 'dasboard' %}class="active"{% endif %}>
                 <a href="{{ path('dashboard') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard Stats</span>
