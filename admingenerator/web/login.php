@@ -1,3 +1,6 @@
+<?php
+if (empty($mensaje_login)) $mensaje_login = '';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -63,12 +66,13 @@
 
         <div class="container">
 
-            <form class="form-signin">
-                <h2 class="form-signin-heading">Inicio de sesión</h2>
+            <form class="form-signin" method="POST" action="">
+                <h2 class="form-signin-heading text-center">Inicio de sesión</h2>
+                <p class="form-signin-heading text-center text-danger"><?php echo $mensaje_login; ?></p>
                 <label for="inputEmail" class="sr-only">Usuario</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
+                <input name="usuario" type="text" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
                 <label for="inputPassword" class="sr-only">Clave</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Clave" required>
+                <input name="clave" type="password" id="inputPassword" class="form-control" placeholder="Clave" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>
             </form>
 

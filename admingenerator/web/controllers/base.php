@@ -32,7 +32,6 @@ require_once __DIR__.'/sonido/index.php';
 require_once __DIR__.'/usuarios/index.php';
 
 
-
 $app->match('/', function () use ($app) {
 
     return $app['twig']->render('ag_dashboard.html.twig', array());
@@ -40,5 +39,15 @@ $app->match('/', function () use ($app) {
 })
 ->bind('dashboard');
 
+$app->match('/salir', function () use ($app) {
+
+    session_unset();
+    session_destroy();
+    return $app->redirect($app["url_generator"]->generate("dashboard"));;
+        
+})
+->bind('salir');
+
+$app['session.storage.handler'] = null;
 
 $app->run();
