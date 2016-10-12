@@ -283,5 +283,9 @@ while ($f = db_fetch($r))
 {
     $json['aux']['ctasprodpreciosdiff'][] = $f;
 }
-            
+
+require_once('PHP/estadisticas_renderizar.php');
+
+$json['html'] = estadisticas_renderizar($json);
+
 ?>
